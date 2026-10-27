@@ -319,7 +319,12 @@ b,strong{font-weight:600}
 .funnel .on span{color:var(--ink)}
 .proofs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
 .proofs--2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.proofs .ph{aspect-ratio:4/3}
+.proofs .ph{aspect-ratio:3/2}
+.proofs .photo{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--ink);background:var(--paper-3)}
+.proofs .photo img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out)}
+.proofs .photo:hover img{transform:scale(1.04)}
+.proofs .photo figcaption{position:absolute;left:0;bottom:0;padding:4px 8px;background:var(--paper);border-top:1px solid var(--ink);border-right:1px solid var(--ink);font:500 11px/1.4 var(--sans);letter-spacing:.1em}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .proofs .ph-label{padding:8px 10px}
 .proofs .ph-t{font-size:16px}
 
