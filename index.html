@@ -67,7 +67,28 @@
 
     <figure class="hero-media">
       <div class="frame hero-frame">
-        <img class="hero-photo" src="assets/img/awards/final-pitch.jpg" alt="2026 年 10 月 17 日，天衍灵泽在杭州菜鸟智谷的 AI+跨境电商黑客松决赛上路演 CrossCast" width="900" height="1200">
+        <!-- 图纸目录：7 个精选作品和各自的成绩，点一行跳到对应作品 -->
+        <svg class="dw dw-index" viewBox="0 0 600 800" role="img" aria-label="图纸目录：7 个精选作品及成绩">
+          <text class="t-s" x="40" y="58">SHEET INDEX</text>
+          <text class="ix-h" x="40" y="106">图纸目录</text>
+          <text class="t-s" x="560" y="106" text-anchor="end">7 张精选</text>
+          <line class="ln" x1="40" y1="128" x2="560" y2="128"/>
+          <a href="#cc"><rect class="ix-row" x="30" y="137" width="540" height="46"/><text class="ix-c" x="40" y="168">CC-01</text><text class="ix-n" x="124" y="168">CrossCast</text><text class="ix-r ix-hl" x="560" y="168" text-anchor="end">全国二等奖</text></a>
+          <line class="ln ln-h" x1="40" y1="183" x2="560" y2="183"/>
+          <a href="#au"><rect class="ix-row" x="30" y="183" width="540" height="46"/><text class="ix-c" x="40" y="214">AU-02</text><text class="ix-n" x="124" y="214">AURELIA</text><text class="ix-r" x="560" y="214" text-anchor="end">品牌官网</text></a>
+          <line class="ln ln-h" x1="40" y1="229" x2="560" y2="229"/>
+          <a href="#wx"><rect class="ix-row" x="30" y="229" width="540" height="46"/><text class="ix-c" x="40" y="260">WX-03</text><text class="ix-n" x="124" y="260">企业微信 AI 客服</text><text class="ix-r" x="560" y="260" text-anchor="end">已上线</text></a>
+          <line class="ln ln-h" x1="40" y1="275" x2="560" y2="275"/>
+          <a href="#ac"><rect class="ix-row" x="30" y="275" width="540" height="46"/><text class="ix-c" x="40" y="306">AC-04</text><text class="ix-n" x="124" y="306">AI Chronicle</text><text class="ix-r" x="560" y="306" text-anchor="end">已上线</text></a>
+          <line class="ln ln-h" x1="40" y1="321" x2="560" y2="321"/>
+          <a href="#qt"><rect class="ix-row" x="30" y="321" width="540" height="46"/><text class="ix-c" x="40" y="352">QT-05</text><text class="ix-n" x="124" y="352">三值量化</text><text class="ix-r" x="560" y="352" text-anchor="end">2.16 bit</text></a>
+          <line class="ln ln-h" x1="40" y1="367" x2="560" y2="367"/>
+          <a href="#cf"><rect class="ix-row" x="30" y="367" width="540" height="46"/><text class="ix-c" x="40" y="398">CF-06</text><text class="ix-n" x="124" y="398">ChatFlow</text><text class="ix-r" x="560" y="398" text-anchor="end">多 AI 工作台</text></a>
+          <line class="ln ln-h" x1="40" y1="413" x2="560" y2="413"/>
+          <a href="#ql"><rect class="ix-row" x="30" y="413" width="540" height="46"/><text class="ix-c" x="40" y="444">QL-07</text><text class="ix-n" x="124" y="444">qlink</text><text class="ix-r" x="560" y="444" text-anchor="end">双机协作</text></a>
+          <line class="ln" x1="40" y1="459" x2="560" y2="459"/>
+          <a href="#archive"><text class="t-n" x="560" y="744" text-anchor="end">另有 13 件 · 明细栏 →</text></a>
+        </svg>
         <span class="reveal" aria-hidden="true"></span>
       </div>
       <i class="corner c-tl" aria-hidden="true"></i><i class="corner c-tr" aria-hidden="true"></i><i class="corner c-bl" aria-hidden="true"></i><i class="corner c-br" aria-hidden="true"></i>
@@ -101,7 +122,7 @@
     </header>
 
     <!-- 主推：CrossCast（团队） -->
-    <article class="proj proj--featured">
+    <article class="proj proj--featured" id="cc">
       <div class="frame proj-media" data-reveal>
         <svg class="dw dw-wide" viewBox="0 0 1200 520" role="img" aria-label="CrossCast 流水线示意：产品素材经爆款导演、内容、风控、排期四个 Agent 接力，进入人工待审队列，有人确认后才发布到 TikTok 和 YouTube；任一棒没产出、风控没做合规检查或判定拦截，链条当场断掉。">
           <text class="t-s" x="40" y="56">CC-01 · 流水线视图</text>
@@ -201,7 +222,7 @@
     <div class="proj-grid">
 
       <!-- AURELIA（王嘉栾） -->
-      <article class="proj">
+      <article class="proj" id="au">
         <div class="frame proj-media proj-shot" data-reveal>
           <img src="assets/img/work/aurelia.webp" alt="AURELIA 品牌官网首页截图" width="1280" height="800" loading="lazy">
           <span class="reveal" aria-hidden="true"></span>
@@ -220,7 +241,7 @@
       </article>
 
       <!-- 企业微信 AI 客服（匡思鑫） -->
-      <article class="proj">
+      <article class="proj" id="wx">
         <div class="frame proj-media" data-reveal>
           <svg class="dw" viewBox="0 0 600 375" role="img" aria-label="企业微信 AI 客服示意：微信用户经微信客服、企业微信回调到达 Agent；按 245 个真实会话的调用统计，把 32 个工具收敛为记账、读技能说明、收图片 3 个专用工具。">
             <rect class="bx" x="20" y="34" width="112" height="48"/><text class="t-b" x="76" y="64" text-anchor="middle">微信用户</text>
@@ -276,7 +297,7 @@
       </article>
 
       <!-- AI Chronicle（王嘉栾） -->
-      <article class="proj">
+      <article class="proj" id="ac">
         <div class="frame proj-media proj-shot" data-reveal>
           <img src="assets/img/work/ai-chronicle.webp" alt="AI Chronicle 首页截图：八十年智能史" width="1280" height="720" loading="lazy">
           <span class="reveal" aria-hidden="true"></span>
@@ -295,7 +316,7 @@
       </article>
 
       <!-- 三值量化（匡思鑫） -->
-      <article class="proj">
+      <article class="proj" id="qt">
         <div class="frame proj-media" data-reveal>
           <svg class="dw" viewBox="0 0 600 375" role="img" aria-label="三值量化示意：FP16 权重压成 -1、0、+1 三值，合 2.16 bit 每权重；8 项评测平均保留 FP16 的 61.2%。">
             <text class="t-s" x="20" y="34">FP16 权重</text>
@@ -358,7 +379,7 @@
       </article>
 
       <!-- ChatFlow（王嘉栾） -->
-      <article class="proj">
+      <article class="proj" id="cf">
         <div class="frame proj-media proj-shot" data-reveal>
           <img src="assets/img/work/chatflow.webp" alt="ChatFlow 会议室界面截图：几个 AI 助手在同一个房间里分工讨论" width="1280" height="800" loading="lazy">
           <span class="reveal" aria-hidden="true"></span>
@@ -377,7 +398,7 @@
       </article>
 
       <!-- qlink（匡思鑫） -->
-      <article class="proj">
+      <article class="proj" id="ql">
         <div class="frame proj-media" data-reveal>
           <svg class="dw" viewBox="0 0 600 375" role="img" aria-label="qlink 示意：两台电脑上的 Agent 都只主动外连中转，零入站端口；中转用 TLS 固定证书；命令只在对方认领的项目文件夹里执行，并写审计日志。">
             <g class="dim"><line class="ln" x1="20" y1="54" x2="580" y2="54" marker-start="url(#tk)" marker-end="url(#tk)"/><text class="t-s" x="300" y="42" text-anchor="middle">零入站端口 · 两端都只主动外连中转</text></g>
@@ -461,13 +482,6 @@
     <div class="member-grid">
 
       <article class="member" data-reveal>
-        <figure class="member-photo">
-          <div class="frame">
-            <!-- 占位：王嘉栾的照片，竖版 3:4。拿到后换成 <img src="assets/img/wangyi.jpg" alt="王嘉栾"> -->
-            <div class="ph"><div class="ph-label"><span class="ph-t">王嘉栾</span><span class="ph-s">照片 · 待补</span></div></div>
-            <span class="reveal" aria-hidden="true"></span>
-          </div>
-        </figure>
         <div class="member-body">
           <p class="member-role">队长 · 系统架构与核心开发</p>
           <h3>王嘉栾</h3>
@@ -483,12 +497,6 @@
       </article>
 
       <article class="member" data-reveal>
-        <figure class="member-photo">
-          <div class="frame">
-            <img src="assets/img/photo.jpg" alt="匡思鑫的证件照" width="450" height="600" loading="lazy">
-            <span class="reveal" aria-hidden="true"></span>
-          </div>
-        </figure>
         <div class="member-body">
           <p class="member-role">开发 · Agent 与模型</p>
           <h3>匡思鑫</h3>
@@ -591,13 +599,6 @@
           <li><b>6</b><span>决赛</span></li>
           <li class="on"><b>2</b><span>二等奖</span></li>
         </ol>
-        <!-- 获奖证书还没拿到，先留占位；拿到后换成 <img>，文件放 assets/img/awards/ -->
-        <div class="proofs proofs--2">
-          <figure class="photo"><img src="assets/img/awards/award-ceremony.jpg" alt="决赛颁奖：领取二等奖" width="1200" height="800" loading="lazy"><figcaption>颁奖 · 二等奖</figcaption></figure>
-          <figure class="photo"><img src="assets/img/awards/award-stage.jpg" alt="二等奖获奖团队在舞台上合影" width="1200" height="800" loading="lazy"><figcaption>二等奖登台</figcaption></figure>
-          <figure class="photo"><img src="assets/img/awards/finalists.jpg" alt="AI+跨境电商黑客松决赛全体合影，2026 年 10 月 17 日" width="1200" height="800" loading="lazy"><figcaption>决赛合影 · 2026.10.17</figcaption></figure>
-          <figure class="ph"><div class="ph-label"><span class="ph-t">获奖证书</span><span class="ph-s">待补</span></div></figure>
-        </div>
       </article>
 
       <article class="award" data-reveal>
@@ -605,10 +606,6 @@
         <h3>超级 OPC 共创日<small>动漫潮玩 AI 黑客松</small></h3>
         <p>第十六届中国国际影视动漫版权保护和贸易博览会同期活动，由香港科创协会、湾区数字经济超级个体联盟颁发。参赛作品是我们的 IP Ops：输入一个动漫潮玩 IP，AI 团队一次跑完选题、三平台文案与封面、一周发布排期和私域转化话术。</p>
         <p class="team-line"><b>团队</b>王嘉栾 · 匡思鑫</p>
-        <div class="proofs proofs--2">
-          <figure class="ph"><div class="ph-label"><span class="ph-t">获奖证书</span><span class="ph-s">待补</span></div></figure>
-          <figure class="ph"><div class="ph-label"><span class="ph-t">现场照片</span><span class="ph-s">待补</span></div></figure>
-        </div>
       </article>
 
     </div>

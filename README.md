@@ -17,7 +17,7 @@ python -m http.server 8000      # 浏览器开 http://localhost:8000
 | `index.html` | 页面内容，部分作品配图是内联 SVG 结构图 |
 | `styles.css` | 版式、配色、响应式 |
 | `main.js` | 进场动效、数字滚动、首屏图纸网格、状态栏翻牌字、移动端菜单 |
-| `assets/` | 字体（许可证见 `assets/fonts/OFL.txt`）、成员照片、作品截图 |
+| `assets/` | 字体（许可证见 `assets/fonts/OFL.txt`）、作品截图 |
 | `tools/subset-cjk.py` | 按页面用字裁剪中文标题字体 |
 
 ## 改了页面文字之后

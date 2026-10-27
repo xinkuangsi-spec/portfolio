@@ -128,8 +128,17 @@ b,strong{font-weight:600}
 .reveal{position:absolute;inset:0;z-index:3;background:var(--paper);transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--ease);pointer-events:none}
 .js .reveal{transform:scaleX(1)}
 .js .is-in>.reveal,.js .is-in .frame>.reveal{transform:scaleX(0)}
-.hero-frame{aspect-ratio:3/4;background:var(--paper-2);clip-path:polygon(0 0,84% 0,100% 11%,100% 100%,16% 100%,0 89%)}
-.hero-frame .ph{position:absolute;inset:0}
+.hero-frame{aspect-ratio:3/4;background-color:var(--paper);background-image:linear-gradient(rgba(43,43,43,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(43,43,43,.065) 1px,transparent 1px);background-size:20px 20px;clip-path:polygon(0 0,84% 0,100% 11%,100% 100%,16% 100%,0 89%)}
+/* 首屏图纸目录：每行是一个精选作品，悬停涂荧光黄，点了跳到作品 */
+.hero-frame .dw-index{position:absolute;inset:0;width:100%;height:100%}
+.dw .ix-h{font-family:var(--serif);font-size:42px}
+.dw .ix-c{font-size:17px;letter-spacing:.1em;fill:var(--muted)}
+.dw .ix-n{font-size:25px;font-weight:500}
+.dw .ix-r{font-size:20px;fill:var(--muted)}
+.dw .ix-hl{fill:var(--ink);font-weight:600}
+.dw .ix-row{fill:transparent;transition:fill .25s}
+.dw a:hover .ix-row,.dw a:focus-visible .ix-row{fill:var(--yellow)}
+.dw a:hover .ix-r{fill:var(--ink)}
 .corner{position:absolute;z-index:2;width:22px;height:22px;border:1.5px solid var(--ink)}
 .c-tl{top:-11px;left:-11px;border-right:0;border-bottom:0}
 .c-tr{top:-11px;right:-11px;border-left:0;border-bottom:0}
@@ -147,12 +156,6 @@ b,strong{font-weight:600}
 .scroll i::after{content:"";position:absolute;left:-1px;top:0;width:3px;height:16px;background:var(--yellow);box-shadow:0 0 0 1px var(--ink);animation:tick 1.9s var(--ease) infinite}
 @keyframes tick{0%{transform:translateY(-18px)}100%{transform:translateY(58px)}}
 
-/* 占位：剖面线（机械制图里表示剖切面），拿到真图后整块换成 <img> */
-.ph{display:grid;place-items:center;background:repeating-linear-gradient(45deg,rgba(43,43,43,.2) 0 1px,transparent 1px 10px),var(--paper-2);border:1px solid var(--ink)}
-.hero-frame .ph{border:0}
-.ph-label{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 16px;background:var(--paper);border:1px solid var(--ink);text-align:center}
-.ph-t{font:400 20px/1.25 var(--serif)}
-.ph-s{font:500 11px/1 var(--sans);letter-spacing:.18em;color:var(--muted)}
 
 /* ---------- 数字条 ---------- */
 .stats{background:var(--paper-2);border-bottom:1px solid var(--ink)}
@@ -249,14 +252,7 @@ b,strong{font-weight:600}
 /* ---------- 成员：规格里 About 那一节，一人一张，照片在左 ---------- */
 .members{background:var(--paper-2)}
 .member-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
-.member{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:28px;padding:32px;background:var(--paper);border:1px solid var(--ink)}
-.member-photo{margin:0}
-.member-photo .frame{aspect-ratio:3/4;border:1px solid var(--ink);background:var(--paper-3)}
-.member-photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
-.member:hover .member-photo img{transform:scale(1.03)}
-.member-photo .ph{position:absolute;inset:0;border:0}
-.member-photo .ph-label{padding:8px 10px}
-.member-photo .ph-t{font-size:18px}
+.member{padding:32px 36px;background:var(--paper);border:1px solid var(--ink)}
 .member-role{font:500 12px/1.4 var(--sans);letter-spacing:.16em;color:var(--muted)}
 .member h3{margin:8px 0 14px;font:400 44px/1.1 var(--serif)}
 .member-body>p:not(.member-role):not(.member-links){font-size:15px;line-height:1.8}
@@ -317,16 +313,6 @@ b,strong{font-weight:600}
 .funnel span{display:block;margin-top:6px;font:500 11px/1 var(--sans);letter-spacing:.12em;color:var(--muted)}
 .funnel .on{background:var(--yellow)}
 .funnel .on span{color:var(--ink)}
-.proofs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
-.proofs--2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.proofs .ph{aspect-ratio:3/2}
-.proofs .photo{position:relative;margin:0;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--ink);background:var(--paper-3)}
-.proofs .photo img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out)}
-.proofs .photo:hover img{transform:scale(1.04)}
-.proofs .photo figcaption{position:absolute;left:0;bottom:0;padding:4px 8px;background:var(--paper);border-top:1px solid var(--ink);border-right:1px solid var(--ink);font:500 11px/1.4 var(--sans);letter-spacing:.1em}
-.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.proofs .ph-label{padding:8px 10px}
-.proofs .ph-t{font-size:16px}
 
 /* ---------- 联系（反色） ---------- */
 .contact{background:var(--ink);color:var(--paper);text-align:center;border-top:1px solid var(--hair-inv)}
@@ -392,7 +378,6 @@ b,strong{font-weight:600}
   .btn-talk{display:none}
   .burger{margin-left:auto}
   .member{grid-template-columns:1fr;padding:24px 20px}
-  .member-photo{max-width:180px}
   .contact-cards{grid-template-columns:1fr}
   .hero{min-height:auto}
   .hero-inner{padding-top:40px;padding-bottom:96px;row-gap:64px}
@@ -427,7 +412,6 @@ b,strong{font-weight:600}
   .award{padding:24px 20px}
   .funnel b{font-size:22px}
   .funnel li{padding:10px 4px}
-  .proofs,.proofs--2{grid-template-columns:repeat(2,minmax(0,1fr))}
   .foot-grid{grid-template-columns:1fr}
   .foot-col,.foot-col:first-child,.foot-col:last-child{border-left:0;padding:32px 0;border-top:1px solid var(--ink);align-items:flex-start;text-align:left}
   .foot-col:first-child{border-top:0}
