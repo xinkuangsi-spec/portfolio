@@ -106,7 +106,7 @@
 <!-- ================= 数字条 ================= -->
 <section class="stats" id="stats" aria-label="关键数字">
   <div class="wrap stats-grid">
-    <div class="stat" data-reveal><b><span data-count="1000">1000</span><small>+</small></b><span><em><a href="#cc">CrossCast</a></em>支队伍报名阿里云、菜鸟智谷等主办的跨境黑客松，CrossCast 进决赛 6 强、获二等奖</span></div>
+    <div class="stat" data-reveal><b><span data-count="1000">1000</span><small>+</small></b><span><em><a href="#cc">CrossCast</a></em>阿里云、菜鸟智谷等主办的跨境黑客松，从 1000+ 支队伍中进 6 强、获二等奖</span></div>
     <div class="stat" data-reveal><b><span data-count="2.9" data-dec="1">2.9</span><small>秒</small></b><span><em><a href="#n09">AI 桌面助手</a></em>后台跑完 10 步表单任务，每一步自动核验</span></div>
     <div class="stat" data-reveal><b><span data-count="2.16" data-dec="2">2.16</span><small>bit</small></b><span><em><a href="#qt">三值量化</a></em>Qwen3.5-2B 压到每权重 2.16 bit，8 项评测保留 FP16 的 61.2%</span></div>
     <div class="stat" data-reveal><b><span data-count="1.8" data-dec="1">1.8</span><small>万字</small></b><span><em><a href="#ac">AI Chronicle</a></em>中英双语的 AI 发展史长文</span></div>
@@ -194,16 +194,16 @@
         <div data-reveal>
           <ul class="chips"><li class="by">团队项目</li><li>多 Agent 接力</li><li>MCP</li><li>视频生成</li><li>Docker</li></ul>
           <h3 class="proj-name">CrossCast<small>跨境电商短视频多 Agent 平台</small></h3>
-          <p>跨境卖家做海外营销，选题靠猜、内容产出慢、各国广告规则不熟容易被罚。CrossCast 让一个人指挥一支 AI 团队：4 个流水线 Agent 接力完成爆款分析、内容与分镜、合规审查和发布排期，另有出片总控、实拍剪辑 2 个独立 Agent 负责视频。人工复核后发布，已在 TikTok、YouTube 真实发布。</p>
+          <p>跨境卖家做海外营销，选题靠猜、内容产出慢、各国广告规则不熟容易被罚。CrossCast 让一个人指挥一支 AI 团队：4 个流水线 Agent 接力完成爆款分析、内容与分镜、合规审查和发布排期，另有出片总控、实拍剪辑 2 个独立 Agent 负责视频。经人工确认后发出，已在 TikTok、YouTube 真实发布。</p>
           <dl class="roles">
             <div><dt>王嘉栾 · 队长</dt><dd>系统架构与核心开发</dd></div>
-            <div><dt>匡思鑫</dt><dd>多厂商大模型接入（实测 12 家厂商的采样参数差异，参数面板按厂商动态渲染）、云端 GPU 视频生成接入、容器化部署与排障；决赛路演稿汇总定稿与 Demo 视频</dd></div>
+            <div><dt>匡思鑫</dt><dd>接入多家大模型厂商（实测 12 家的采样参数差异，按厂商动态渲染参数面板）与云端 GPU 视频生成；容器化部署与排障；决赛路演稿汇总定稿与 Demo 视频制作</dd></div>
           </dl>
         </div>
         <div data-reveal>
           <p class="points-k">系统里的几条硬约束</p>
           <ul class="points">
-            <li>Agent 之间传产物，不让模型复述 ID；任一棒没产出、风控没调合规检查、判定拦截，链条当场断掉</li>
+            <li>Agent 之间传产物，不让模型复述 ID；任一棒没产出、风控没调合规检查或判定拦截，链条当场断掉</li>
             <li>Agent 的工具里没有「发布」，终点永远是待审队列，提交平台必须有人点确认</li>
             <li>工具权限在执行层按白名单校验，不寄望于提示词</li>
           </ul>
@@ -285,7 +285,7 @@
           <ul class="points">
             <li>开工前两天内实测封死六条「不备案也能接」的绕行方案，列清客户侧的硬前置条件</li>
             <li>查出三处静默失败：回调一条不来、后台保存被拒、会话永久卡在「待人工」</li>
-            <li>红队测出命令注入和任意文件读取隐患，统计 245 个真实会话的调用后，把 <b>32 个工具收到 3 个</b>专用工具</li>
+            <li>红队测出命令注入和任意文件读取隐患，统计 245 个真实会话的调用后，把 <b>32 个工具收敛为 3 个</b>专用工具</li>
           </ul>
           <dl class="tb">
             <div><dt>主做</dt><dd>匡思鑫</dd></div>
@@ -425,7 +425,7 @@
         <div class="proj-body" data-reveal>
           <ul class="chips"><li class="by">匡思鑫</li><li>Python</li><li>TLS</li><li>MCP</li></ul>
           <h3 class="proj-name">qlink<small>两台电脑的 Agent 协作通道</small></h3>
-          <p>团队日常协作用的通道：两台电脑上的编程 Agent 按「项目 + 任务线程」协作，发消息、认领任务、在对方认领的项目文件夹里跑命令、传文件。</p>
+          <p>我们俩日常就靠它配合：两台电脑上的编程 Agent 按「项目 + 任务线程」分工，认领任务、发消息、传文件，并在对方认领的项目文件夹里跑命令。</p>
           <ul class="points">
             <li>两端都只主动外连中转，零入站端口；每台机器一把令牌，TLS 固定证书防中间人</li>
             <li>远程执行可以关掉，所有命令写审计日志；单文件最大 2 GB，中转保留 7 天</li>
@@ -449,24 +449,24 @@
   <div class="wrap">
     <header class="sec-head sec-head--row" data-reveal>
       <div><p class="eyebrow">02 · 明细栏</p><h2 class="sec-title">更多<em>项目</em></h2></div>
-      <p class="sec-note">机械图纸上，明细栏列出图里的每一个零件。这里借它列出没放进上面的 13 个项目，「主做」写明是谁做的。</p>
+      <p class="sec-note">机械图纸上，明细栏列出图里的每一个零件。这里借它列出另外 13 个项目，每行写明做了什么、谁主做。</p>
     </header>
     <table class="bom" data-reveal>
       <thead><tr><th scope="col">序号</th><th scope="col">项目</th><th scope="col">做了什么</th><th scope="col">主做</th><th scope="col">备注</th></tr></thead>
       <tbody>
         <tr id="n08"><td class="no">08</td><td class="nm">方块仙途<small>原创方块修仙网页游戏</small></td><td>把方块建造和修仙成长融在一起：开荒、修炼、突破境界，筑基之后御剑飞行，从森林一路飞过雪原与沙漠</td><td class="who">王嘉栾</td><td class="rk">打开浏览器即玩</td></tr>
         <tr id="n09"><td class="no">09</td><td class="nm">AI 桌面助手<small>后台操作电脑软件</small></td><td>让 AI 在后台替你操作电脑软件：10 步表单任务 2.9 秒完成，每一步自动核验，不抢你的鼠标</td><td class="who">王嘉栾 · 匡思鑫</td><td class="rk">两台电脑共用一套代码</td></tr>
-        <tr id="n10"><td class="no">10</td><td class="nm">IP Ops<small>动漫潮玩 IP 运营系统</small></td><td>输入一个动漫潮玩 IP，AI 团队一次跑完选题、三平台文案与封面、一周发布排期和私域转化话术。匡思鑫负责 Docker 容器化（源码零改动，跟进上游 17 个 PR）、扫码登录排障、画布走查修掉 6 个问题、出片链路换到 MiniMax H3</td><td class="who">王嘉栾 · 匡思鑫</td><td class="rk"><mark>超级 OPC 创意奖</mark></td></tr>
+        <tr id="n10"><td class="no">10</td><td class="nm">IP Ops<small>动漫潮玩 IP 运营系统</small></td><td>输入一个动漫潮玩 IP，AI 团队一次跑完选题、三平台文案与封面、一周发布排期和私域转化话术。匡思鑫完成 Docker 容器化（源码零改动，跟进上游 17 个 PR）与扫码登录排障，走查画布修掉 6 个问题，并把出片链路换到 MiniMax H3</td><td class="who">王嘉栾 · 匡思鑫</td><td class="rk"><mark>超级 OPC 创意奖</mark></td></tr>
         <tr id="n11"><td class="no">11</td><td class="nm">Liquid Desktop<small>Windows 桌面收纳</small></td><td>一键把杂乱的 Windows 桌面收进玻璃面板，按类整理、搜索即达，原文件一个都不动</td><td class="who">王嘉栾</td><td class="rk">桌面应用</td></tr>
         <tr id="n12"><td class="no">12</td><td class="nm">OpenClaw 一键启动器<small>AI 助手控制台</small></td><td>AI 助手的一站式控制台：启停、模型切换、用量统计放在一个界面里，不用再敲命令</td><td class="who">王嘉栾</td><td class="rk">控制台</td></tr>
-        <tr id="n13"><td class="no">13</td><td class="nm">本地语音输入<small>cc-voice · voice-dictate</small></td><td><a href="https://github.com/Mumumumuyi/cc-voice" target="_blank" rel="noopener">cc-voice</a> 是王嘉栾开源的离线中文语音输入，按住说话、松开上屏。匡思鑫在<a href="https://github.com/xinkuangsi-spec/cc-voice" target="_blank" rel="noopener">它的基础上</a>把识别换成显卡上的 Qwen3-ASR-1.7B，加了识别上下文和字错率调教台；另写了按鼠标侧键的 <a href="https://github.com/xinkuangsi-spec/voice-dictate" target="_blank" rel="noopener">voice-dictate</a>，常驻显存约 1.5 GB，闲置 10 分钟释放</td><td class="who">王嘉栾 · 匡思鑫</td><td class="rk">开源</td></tr>
+        <tr id="n13"><td class="no">13</td><td class="nm">本地语音输入<small>cc-voice · voice-dictate</small></td><td><a href="https://github.com/Mumumumuyi/cc-voice" target="_blank" rel="noopener">cc-voice</a> 是王嘉栾开源的离线中文语音输入，按住说话、松开上屏。匡思鑫在<a href="https://github.com/xinkuangsi-spec/cc-voice" target="_blank" rel="noopener">它的基础上</a>把识别模型换成显卡上的 Qwen3-ASR-1.7B，加了识别上下文和字错率调教台；另写了按鼠标侧键的 <a href="https://github.com/xinkuangsi-spec/voice-dictate" target="_blank" rel="noopener">voice-dictate</a>，常驻显存约 1.5 GB，闲置 10 分钟释放</td><td class="who">王嘉栾 · 匡思鑫</td><td class="rk">开源</td></tr>
         <tr id="n14"><td class="no">14</td><td class="nm">微盘防御轮动策略<small>可回放的策略讲解页</small></td><td>把策略每天怎么决策做成可回放的讲解页：逐日模拟器、十年净值和回撤一目了然</td><td class="who">王嘉栾</td><td class="rk">量化研究</td></tr>
         <tr id="n15"><td class="no">15</td><td class="nm">做T 策略五节课<small>逐分钟播放的课</small></td><td>把做T策略做成可以逐分钟播放的课：每一档挂单什么时候成交、亏在哪里，一眼看懂</td><td class="who">王嘉栾</td><td class="rk">量化研究</td></tr>
         <tr id="n16"><td class="no">16</td><td class="nm">YouTube 批量交付<small>境外 VPS 下载 + 云盘直传</small></td><td>境外 VPS 上用 Docker 跑 yt-dlp 和 rclone，直传客户的 Google Drive；换自有 client_id 后上传快 8.7 倍，端到端从 2.19 提到 36.76 MiB/s，1 TB 约 8 小时</td><td class="who">匡思鑫</td><td class="rk">客户项目</td></tr>
         <tr id="n17"><td class="no">17</td><td class="nm">Qwen3.8-27B 私有部署<small>云工作站本地推理</small></td><td>在 48 GB 显存的 Windows 云工作站上用 llama.cpp 部署 27B 模型（Q4_K_M 整模上卡），网页界面汉化</td><td class="who">匡思鑫</td><td class="rk">已交付</td></tr>
-        <tr id="n18"><td class="no">18</td><td class="nm">wf 编排引擎<small>批量调度编程 Agent</small></td><td>照 Claude Code Workflow 的脚本接口写了一个编排引擎，agent / parallel / pipeline / phase 等调用保持一致，执行器换成 Devin CLI，以 MCP 提供</td><td class="who">匡思鑫</td><td class="rk">自用</td></tr>
-        <tr id="n19"><td class="no">19</td><td class="nm">AI 漫剧出片自动化<small>文镜画师 MCP 接入</small></td><td>通过文镜画师的 MCP 接口加自写的界面驱动，让 Agent 跑通「改文 → 分镜 → 配音 → 视频 → 导出剪映」，出到第 01 集</td><td class="who">匡思鑫</td><td class="rk">实测跑通</td></tr>
-        <tr id="n20"><td class="no">20</td><td class="nm">程序化讲解短片<small>Remotion 3 分钟讲解片</small></td><td>指挥 Devin 用 Remotion 做 3 分钟知识讲解片：旁白实测时长驱动时间线，独立 Agent 终检抓出 3 处数字说过头</td><td class="who">匡思鑫</td><td class="rk">已交付</td></tr>
+        <tr id="n18"><td class="no">18</td><td class="nm">wf 编排引擎<small>批量调度编程 Agent</small></td><td>照 Claude Code Workflow 的脚本接口实现，agent / parallel / pipeline / phase 等调用保持一致，底层执行器换成 Devin CLI，封装为 MCP 工具</td><td class="who">匡思鑫</td><td class="rk">自用</td></tr>
+        <tr id="n19"><td class="no">19</td><td class="nm">AI 漫剧出片自动化<small>文镜画师 MCP 接入</small></td><td>通过文镜画师的 MCP 接口加自写的界面驱动，让 Agent 跑通「改文 → 分镜 → 配音 → 视频 → 导出剪映」，已产出第 01 集</td><td class="who">匡思鑫</td><td class="rk">实测跑通</td></tr>
+        <tr id="n20"><td class="no">20</td><td class="nm">程序化讲解短片<small>Remotion 3 分钟讲解片</small></td><td>指挥 Devin 用 Remotion 做 3 分钟知识讲解片：旁白实测时长驱动时间线，独立 Agent 终检抓出 3 处夸大的数字</td><td class="who">匡思鑫</td><td class="rk">已交付</td></tr>
       </tbody>
     </table>
   </div>
@@ -512,7 +512,7 @@
       <article class="award" data-reveal>
         <div class="award-top"><span class="award-date">2026.08</span><span class="award-rank">创意奖</span></div>
         <h3>超级 OPC 共创日<small>动漫潮玩 AI 黑客松</small></h3>
-        <p>第十六届中国国际影视动漫版权保护和贸易博览会同期活动，由香港科创协会、湾区数字经济超级个体联盟颁发。参赛作品是我们的 IP Ops：输入一个动漫潮玩 IP，AI 团队一次跑完选题、三平台文案与封面、一周发布排期和私域转化话术。</p>
+        <p>第十六届中国国际影视动漫版权保护和贸易博览会同期活动，奖项由香港科创协会、湾区数字经济超级个体联盟颁发。获奖的是 IP Ops：输入一个动漫潮玩 IP，AI 团队一次跑完选题、三平台文案与封面、一周发布排期和私域转化话术。</p>
         <p class="team-line"><b>团队</b>王嘉栾 · 匡思鑫 · 参赛项目 <a href="#n10">IP Ops（明细栏 10）</a></p>
       </article>
 
@@ -560,7 +560,7 @@
       <article class="fcard" data-reveal>
         <i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/><path d="M10 10h4v4h-4z"/></svg></i>
         <h3>AIGC 与模型</h3>
-        <p>视频的生成与交付链路，以及把模型压小、跑在自己的机器上。</p>
+        <p>视频的生成与交付链路，模型的压缩与私有部署。</p>
         <ul>
           <li><a href="#qt">三值量化</a><span>QAT + 知识蒸馏</span></li>
           <li><a href="#n17">Qwen3.8-27B 私有部署</a><span>llama.cpp</span></li>
@@ -583,10 +583,10 @@
       <h2 class="sec-title">两台电脑，一个<em>大脑</em></h2>
     </header>
     <ol class="steps">
-      <li class="step" data-reveal><b>01</b><span class="step-k">按线程分工</span><p>每个任务开一个线程，对方认领后才在他的项目文件夹里执行；消息、命令、文件都走 qlink，全程留审计日志。</p></li>
+      <li class="step" data-reveal><b>01</b><span class="step-k">按线程分工</span><p>每个任务开一个线程，对方认领后命令才在其项目文件夹里执行；消息、命令、文件都走 qlink，全程留审计日志。</p></li>
       <li class="step" data-reveal><b>02</b><span class="step-k">共享大脑</span><p>两个人踩过的坑写进同一个知识库，开工前先查对方的经验，同一个坑不交两次学费。</p></li>
       <li class="step" data-reveal><b>03</b><span class="step-k">先探边界</span><p>动工前先实测，不凭文档猜。企业微信项目开工前，两天内封死六条「不备案也能接」的绕行方案。</p></li>
-      <li class="step" data-reveal><b>04</b><span class="step-k">真跑验收</span><p>交付前按真实路径跑一遍、逐项对照验收；改动单独做对照，先量噪声再下结论。</p></li>
+      <li class="step" data-reveal><b>04</b><span class="step-k">真跑验收</span><p>交付前按真实路径跑一遍、逐项核对验收；改动单独做对照，先量噪声再下结论。</p></li>
     </ol>
   </div>
 </section>
@@ -617,7 +617,7 @@
         <div class="member-body">
           <p class="member-role">开发 · Agent 与模型</p>
           <h3>匡思鑫</h3>
-          <p>做大模型应用开发。在意让 AI 在真实业务里可靠地跑：规则写进代码，接到陌生人面前先收工具、打红队，每个改动单独做对照实验。</p>
+          <p>做大模型应用开发，专注让 AI 在真实业务里可靠运行：规则写进代码，对外开放前先收敛工具、做红队测试，每次改动单独做对照实验。</p>
           <ul class="creds">
             <li><i class="ck" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></svg></i><span><b>主做</b>企业微信 AI 客服 · 三值量化 · qlink · YouTube 批量交付 · Qwen3.8-27B 私有部署 · wf 编排引擎 · AI 漫剧出片自动化 · 程序化讲解短片</span></li>
             <li><i class="ck" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-7"/></svg></i><span><b>合作</b>CrossCast · AI 桌面助手 · IP Ops · 本地语音输入（二次开发）</span></li>
@@ -634,7 +634,7 @@
   <div class="wrap contact-inner" data-reveal>
     <p class="eyebrow">07 · 联系</p>
     <h2 class="contact-h">一起把 AI 做进<em>真实业务</em></h2>
-    <p class="contact-p">看到相近的项目，想做类似的东西，或者想聊聊其中某一个，都可以找我们。</p>
+    <p class="contact-p">有相近的业务需求、想做类似的项目，或者想聊聊其中某一个，都可以找我们。</p>
     <div class="contact-cards">
       <div class="ccard">
         <span class="ccard-k">王嘉栾</span>
