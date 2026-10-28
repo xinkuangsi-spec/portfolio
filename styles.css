@@ -26,6 +26,7 @@ img,svg{display:block;max-width:100%}
 ul,ol{list-style:none}
 b,strong{font-weight:600}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.contact :focus-visible{outline-color:var(--yellow);outline-offset:4px}
 .defs{position:absolute;width:0;height:0;overflow:hidden}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
@@ -302,7 +303,7 @@ b,strong{font-weight:600}
 .award--main{padding:36px 40px}
 .award-cols{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:start}
 .award-cols p:not(.team-line){margin-top:12px;color:var(--muted);font-size:15px;line-height:1.85}
-.award--main h3{font-size:clamp(32px,3.2vw,46px)}
+.award.award--main h3{font-size:clamp(32px,3.2vw,46px)}
 .dossier{margin-top:24px;border:1px solid var(--ink);background:var(--paper)}
 .dossier div{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:12px;padding:11px 14px;border-top:1px solid var(--hair)}
 .dossier div:first-child{border-top:0}
@@ -362,6 +363,8 @@ b,strong{font-weight:600}
 [data-reveal]{transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
 .js [data-reveal]{opacity:0;transform:translateY(20px)}
 .js [data-reveal].in,.js .proj-media[data-reveal]{opacity:1;transform:none}
+.js .fcard[data-reveal]{transition:opacity .9s var(--ease-out),transform .45s var(--ease-out),background .35s}
+.js .fcard[data-reveal].in:hover{transform:translateY(-6px)}
 
 /* ---------- 平板 ---------- */
 @media (max-width:1023px){
@@ -378,7 +381,7 @@ b,strong{font-weight:600}
   .stat:nth-child(3){border-left:0;padding-left:0}
   .stat:nth-child(n+3){border-top:1px solid var(--ink)}
   .proj-body--split{grid-template-columns:1fr;gap:12px}
-  .proj-grid{grid-template-columns:1fr;gap:64px}
+  .proj-grid{grid-template-columns:minmax(0,1fr);gap:64px}
   .member-grid{grid-template-columns:1fr}
   .focus-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -386,6 +389,11 @@ b,strong{font-weight:600}
   .step:nth-child(n+3){border-top:1px solid var(--hair-inv)}
   .award-cols{grid-template-columns:1fr;gap:8px}
   .flank{display:none}
+}
+@media (min-width:768px) and (max-width:1023px){
+  .proj-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:64px 24px}
+  .focus-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .focus-grid>.fcard:last-child{grid-column:1/-1}
 }
 
 /* ---------- 手机 ---------- */
@@ -399,7 +407,7 @@ b,strong{font-weight:600}
   .hero-sub{font-size:16px}
   .hero-stats .stat-card{min-width:0;flex:1}
   .hero-media{width:auto;margin:0 16px 0 40px}
-  .achv{left:-28px;max-width:240px}
+  .achv{left:-28px;bottom:-16px;max-width:240px}
   .sh-sq{left:68%;top:12%}
   .scroll{display:none}
   .stats-grid{grid-template-columns:1fr}
@@ -407,7 +415,10 @@ b,strong{font-weight:600}
   .stat:nth-child(n+2){border-top:1px solid var(--ink)}
   .stat{padding-top:30px;padding-bottom:32px}
   .dw-wide{display:none}
+  #wx .proj-media,#qt .proj-media,#ql .proj-media{overflow-x:auto}
+  #wx .dw,#qt .dw,#ql .dw{width:600px;max-width:none}
   .dw-tall{display:block}
+  .roles div{grid-template-columns:1fr;gap:4px;padding:14px 0}
   .tb{grid-template-columns:repeat(2,minmax(0,1fr))}
   .tb div:nth-child(3){border-left:0}
   .tb div:nth-child(n+3){border-top:1px solid var(--ink)}
@@ -425,13 +436,15 @@ b,strong{font-weight:600}
   .step,.step:nth-child(3){border-left:0;padding-left:0;padding-right:0}
   .step:nth-child(n+2){border-top:1px solid var(--hair-inv)}
   .award,.award--main{padding:24px 20px}
-  .funnel b{font-size:20px}
-  .funnel span{font-size:10px;letter-spacing:.04em;line-height:1.3}
+  .funnel{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .funnel b{font-size:26px}
+  .funnel span{font-size:12px;letter-spacing:0;line-height:1.45}
+  .funnel .on{grid-column:1/-1;border-left:0;border-top:1px solid var(--ink)}
   .dossier div{grid-template-columns:5.5em minmax(0,1fr)}
   .award-top{flex-direction:column;align-items:flex-start}
   .award-rank{white-space:nowrap}
-  .funnel .on b{font-size:15px;white-space:nowrap;line-height:1.35}
-  .funnel li{padding:10px 4px}
+  .funnel .on b{font-size:28px}
+  .funnel li{padding:12px 6px}
   .foot-grid{grid-template-columns:1fr}
   .foot-col,.foot-col:first-child,.foot-col:last-child{border-left:0;padding:32px 0;border-top:1px solid var(--ink);align-items:flex-start;text-align:left}
   .foot-col:first-child{border-top:0}
@@ -443,4 +456,5 @@ b,strong{font-weight:600}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js [data-reveal],.js .hero-title .line>span,.js .achv{opacity:1!important;transform:none!important}
   .js .reveal{transform:scaleX(0)!important}
+  .btn-yellow:hover,.btn-talk:hover,.js .fcard[data-reveal].in:hover,.proj:hover .dw,.proj:hover .proj-shot img{transform:none!important}
 }

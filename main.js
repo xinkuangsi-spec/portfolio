@@ -222,7 +222,8 @@
       next(o.cycleDelay + animateTo(phrases[idx]));
     }, delay);
     el.style.setProperty('--flip', `${o.flipMs / 1000}s`);
-    next(o.cycleDelay);
+    // 减少动态效果时停在第一组词，不再轮换（规格：DISABLE LOOPS）
+    if (!reduced) next(o.cycleDelay);
   }
 
   const flapEl = document.querySelector('.flap');
