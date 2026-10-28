@@ -144,7 +144,7 @@
     fillOpacity: 0.78, strokeOpacity: 0.55, lineWidth: 1, pulseSpeed: 600,
   });
 
-  // ---- 翻牌字：状态栏里轮换三个求职方向，机械翻牌，呼应机械专业 ----
+  // ---- 翻牌字：状态栏里轮换团队承接的项目方向，机械翻牌，呼应图纸风格 ----
   function splitFlap(el, o) {
     const words = el.dataset.words.split('|');
     const width = Math.max(...words.map(w => [...w].length));
@@ -238,7 +238,4 @@
   burger.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
   document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-
-  // ---- 还没放文件的按钮不跳转 ----
-  document.querySelectorAll('.is-pending').forEach(a => a.addEventListener('click', e => e.preventDefault()));
 })();

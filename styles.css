@@ -51,9 +51,6 @@ b,strong{font-weight:600}
 .btn-line:hover{background:var(--paper-2)}
 .btn-yellow{background:var(--yellow);color:var(--ink)}
 .btn-yellow:hover{background:var(--yellow-2);transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--ink)}
-.btn-ghost{background:transparent;color:inherit;border-color:currentColor}
-.btn-ghost small{font-size:11px;letter-spacing:.12em;opacity:.7;border:1px solid currentColor;padding:3px 6px}
-.is-pending{cursor:not-allowed;opacity:.62}
 
 /* ---------- 顶栏 ---------- */
 .site-head{position:fixed;inset:0 0 auto;z-index:50;background:var(--paper);border-bottom:1px solid var(--ink)}
@@ -261,8 +258,6 @@ b,strong{font-weight:600}
 .creds{margin:22px 0 4px;border-top:1px solid var(--ink)}
 .creds li{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--hair);font-size:14px}
 .creds b{margin-right:8px}
-.creds .is-todo{color:var(--muted)}
-.creds .is-todo .ck{background:var(--paper);border-style:dashed}
 .ck{flex:none;display:grid;place-items:center;width:20px;height:20px;margin-top:1px;background:var(--yellow);border:1px solid var(--ink)}
 .ck svg{width:13px;height:13px;fill:none;stroke:var(--ink);stroke-width:2}
 .member-links{display:flex;flex-wrap:wrap;gap:0 24px}
