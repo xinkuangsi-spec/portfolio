@@ -340,7 +340,8 @@ b,strong{font-weight:600}
 .ccard{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 20px 26px;border:1px solid var(--hair-inv)}
 .ccard-k{font:400 28px/1 var(--serif)}
 .ccard small{font-size:12px;letter-spacing:.08em;color:rgba(235,233,227,.6)}
-.ccard-alt{margin-top:-6px}
+.ccard-alt{margin-top:-2px}
+.ccard .btn-yellow{margin-top:12px}
 .ccard small a{white-space:nowrap;color:var(--paper);border-bottom:1px solid rgba(235,233,227,.6)}
 .ccard small a:hover{border-color:var(--yellow);color:var(--yellow)}
 .ccard .btn{justify-content:center;width:100%;max-width:300px}
