@@ -344,6 +344,12 @@ b,strong{font-weight:600}
 .ccard small a{white-space:nowrap;color:var(--paper);border-bottom:1px solid rgba(235,233,227,.6)}
 .ccard small a:hover{border-color:var(--yellow);color:var(--yellow)}
 .ccard .btn{justify-content:center;width:100%;max-width:300px}
+/* 微信号：一行发丝框，号码可整段选中，右边复制按钮 */
+.wx{display:flex;align-items:center;gap:12px;width:100%;max-width:300px;padding:6px 6px 6px 14px;border:1px solid var(--hair-inv)}
+.wx-k{font:500 11px/1 var(--sans);letter-spacing:.2em;color:rgba(235,233,227,.6)}
+.wx-id{flex:1;text-align:left;font:500 15px/1.2 var(--sans);letter-spacing:.04em;user-select:all;-webkit-user-select:all}
+.wx-copy{padding:8px 12px;background:transparent;border:1px solid var(--hair-inv);color:var(--paper);font:500 12px/1 var(--sans);letter-spacing:.14em;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.wx-copy:hover,.wx-copy.is-done{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
 .contact .btn-yellow:hover{box-shadow:3px 3px 0 var(--paper)}
 
 /* ---------- 页脚 ---------- */

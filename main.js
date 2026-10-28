@@ -229,6 +229,26 @@
   const flapEl = document.querySelector('.flap');
   if (flapEl) splitFlap(flapEl, { flips: 6, flipMs: 120, stagger: 50, cycleDelay: 2600 });
 
+  // ---- 复制微信号 ----
+  const status = document.getElementById('copy-status');
+  const copyText = text => {
+    if (navigator.clipboard && isSecureContext) return navigator.clipboard.writeText(text);
+    // 非 https 或旧浏览器：退回到选中再执行复制
+    const ta = Object.assign(document.createElement('textarea'), { value: text });
+    ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.append(ta); ta.select();
+    const ok = document.execCommand('copy'); ta.remove();
+    return ok ? Promise.resolve() : Promise.reject();
+  };
+  document.querySelectorAll('.wx-copy').forEach(btn => btn.addEventListener('click', () => {
+    const id = btn.dataset.copy;
+    copyText(id).then(() => {
+      btn.textContent = '已复制'; btn.classList.add('is-done');
+      if (status) status.textContent = `已复制微信号 ${id}`;
+      setTimeout(() => { btn.textContent = '复制'; btn.classList.remove('is-done'); }, 1800);
+    }, () => { btn.textContent = '长按号码复制'; });
+  }));
+
   // ---- 移动端菜单 ----
   const burger = document.querySelector('.burger');
   const setMenu = open => {
