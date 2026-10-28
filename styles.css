@@ -163,6 +163,8 @@ b,strong{font-weight:600}
 .stat small{font:500 14px/1 var(--sans);letter-spacing:.12em}
 .stat>span{display:block;margin-top:16px;max-width:19em;font:500 13px/1.65 var(--sans);letter-spacing:.04em;color:var(--muted)}
 .stat>span em{display:block;margin-bottom:4px;font-style:normal;font-weight:600;color:var(--ink);letter-spacing:.14em}
+.stat>span em a{border-bottom:1px solid var(--ink);transition:background .3s}
+.stat>span em a:hover{background:var(--yellow)}
 
 /* ---------- 项目 ---------- */
 .proj-media{border:1px solid var(--ink);background-color:var(--paper);background-image:linear-gradient(rgba(43,43,43,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(43,43,43,.065) 1px,transparent 1px);background-size:20px 20px;background-position:-1px -1px}
@@ -273,7 +275,10 @@ b,strong{font-weight:600}
 .fcard h3{margin:24px 0 10px;font:400 32px/1.2 var(--serif)}
 .fcard>p{color:var(--muted)}
 .fcard ul{margin-top:20px;border-top:1px solid var(--hair)}
-.fcard li{position:relative;padding:10px 0 10px 20px;border-bottom:1px solid var(--hair);font-size:15px}
+.fcard li{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0 10px 20px;border-bottom:1px solid var(--hair);font-size:15px}
+.fcard li a{border-bottom:1px solid var(--ink);transition:background .3s}
+.fcard li a:hover{background:var(--yellow)}
+.fcard li span{flex:none;color:var(--muted);font-size:13px}
 .fcard li::before{content:"";position:absolute;left:0;top:50%;width:8px;height:8px;margin-top:-4px;border:1px solid var(--ink);background:var(--yellow)}
 
 /* ---------- 做法（反色） ---------- */
@@ -311,6 +316,8 @@ b,strong{font-weight:600}
 .award h3 small{display:block;margin-top:8px;font:500 14px/1.4 var(--sans);letter-spacing:.1em;color:var(--muted)}
 .award>p{color:var(--muted);font-size:15px}
 .team-line{margin-top:14px;font-size:14px}
+.team-line a{border-bottom:1px solid var(--ink);transition:background .3s}
+.team-line a:hover{background:var(--yellow)}
 .team-line b{display:inline-block;margin-right:10px;padding:3px 8px;background:var(--ink);color:var(--paper);font:600 11px/1.4 var(--sans);letter-spacing:.16em}
 .funnel{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:24px;border:1px solid var(--ink);background:var(--paper)}
 .funnel li{padding:12px 10px;border-left:1px solid var(--ink);text-align:center}
@@ -330,6 +337,8 @@ b,strong{font-weight:600}
 .ccard{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px 20px 26px;border:1px solid var(--hair-inv)}
 .ccard-k{font:400 28px/1 var(--serif)}
 .ccard small{font-size:12px;letter-spacing:.08em;color:rgba(235,233,227,.6)}
+.ccard small a{color:var(--paper);border-bottom:1px solid rgba(235,233,227,.6)}
+.ccard small a:hover{border-color:var(--yellow);color:var(--yellow)}
 .ccard .btn{justify-content:center;width:100%;max-width:300px}
 .contact .btn-yellow:hover{box-shadow:3px 3px 0 var(--paper)}
 
