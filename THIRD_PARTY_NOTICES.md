@@ -2,7 +2,7 @@
 
 ## react-bits
 
-`main.js` 里的首屏图纸网格和状态栏翻牌字，分别移植自 react-bits 的 `CursorGrid` 和 `SplitFlapText` 组件（https://github.com/DavidHDev/react-bits），作为本网站的一部分使用。原许可证全文如下：
+`main.js` 里的首屏图纸网格、状态栏翻牌字、纸纹、首屏描边字和角标光标，分别移植自 react-bits 的 `CursorGrid`、`SplitFlapText`、`Noise`、`StrokeText`、`TargetCursor` 组件（https://github.com/DavidHDev/react-bits），作为本网站的一部分使用。原许可证全文如下：
 
 ```
 MIT + Commons Clause License Condition v1.0

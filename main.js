@@ -1,5 +1,5 @@
 // 作品集交互：开场、滚动进场与揭幕、数字滚动、首屏图纸网格、翻牌字、移动端菜单
-// 图纸网格移植自 react-bits CursorGrid，翻牌字移植自 react-bits SplitFlapText，都是零依赖原生实现
+// 图纸网格、翻牌字、纸纹、描边字、角标光标分别移植自 react-bits 的 CursorGrid、SplitFlapText、Noise、StrokeText、TargetCursor，都改成了零依赖原生实现
 // react-bits: Copyright (c) 2026 David Haz，MIT + Commons Clause，许可证全文见 THIRD_PARTY_NOTICES.md
 (() => {
   const root = document.documentElement;
@@ -228,6 +228,173 @@
 
   const flapEl = document.querySelector('.flap');
   if (flapEl) splitFlap(flapEl, { flips: 6, flipMs: 120, stagger: 50, cycleDelay: 2600 });
+
+  // ---- 纸纹：移植自 react-bits Noise。原版每 2 帧重画一张随机灰度图（胶片颗粒）；
+  //      这里只画一次，当作纸张颗粒，不占后台 CPU（规格：FOLIO PRINTED ON HEAVY ECRU STOCK） ----
+  (() => {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'noise-overlay';
+    canvas.setAttribute('aria-hidden', 'true');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+    const size = 1024, alpha = 14;
+    canvas.width = canvas.height = size;
+    const img = ctx.createImageData(size, size), d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = Math.random() * 255;
+      d[i] = d[i + 1] = d[i + 2] = v;
+      d[i + 3] = alpha;
+    }
+    ctx.putImageData(img, 0, 0);
+    document.body.append(canvas);
+  })();
+
+  // ---- 描边字：移植自 react-bits StrokeText（gsap 时间线换成 requestAnimationFrame，算法不变）
+  //      首屏「干活」先描出墨线轮廓，再从左往右灌满荧光黄（规格：ONE HERO WORD … OUTLINED） ----
+  const strokeText = (el, o) => {
+    const text = el.textContent.trim();
+    const chars = Array.from(text);
+    const NS = 'http://www.w3.org/2000/svg';
+    const fs = 100;                       // SVG 内部按 100 号字排，外面用 em 缩放
+    const dash = fs * 4;                  // 原版 fontSize*7 是按西文粗体定的；虚线按每段轮廓分别起算，中文单段轮廓更短，
+                                          // 取 4 倍才能让描线铺满整个时长。画完清掉虚线，长轮廓也不会留缺口
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'stroke-text__svg');
+    svg.setAttribute('aria-hidden', 'true');
+    const mk = (tag, attrs) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); return n; };
+    const font = `font-size:${fs}px;font-family:${getComputedStyle(el).fontFamily}`;
+    const stroke = mk('text', { x: 0, y: 0, fill: 'none', stroke: o.strokeColor, 'stroke-width': o.strokeWidth, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', style: font });
+    const fill = mk('text', { x: 0, y: 0, fill: o.fillColor, stroke: o.strokeColor, 'stroke-width': o.strokeWidth, style: font });
+    const sT = chars.map(c => { const t = mk('tspan', {}); t.textContent = c; stroke.append(t); return t; });
+    chars.forEach(c => { const t = mk('tspan', {}); t.textContent = c; fill.append(t); });
+    svg.append(stroke);
+    el.textContent = '';
+    el.classList.add('is-stroke');
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', text);
+    el.append(svg);
+
+    // 量出字形外框，定 viewBox 和在行内的尺寸、基线
+    const b = stroke.getBBox();
+    const pad = Math.max(o.strokeWidth, fs * 0.1);
+    const box = { x: b.x - pad, y: b.y - pad, w: b.width + pad * 2, h: b.height + pad * 2 };
+    svg.setAttribute('viewBox', `${box.x} ${box.y} ${box.w} ${box.h}`);
+    svg.style.width = `${box.w / fs}em`;
+    svg.style.height = `${box.h / fs}em`;
+    svg.style.verticalAlign = `${-(box.y + box.h) / fs}em`;
+
+    const id = 'stroke-wipe-' + Math.random().toString(36).slice(2, 8);
+    const clip = mk('clipPath', { id, clipPathUnits: 'userSpaceOnUse' });
+    const wipe = mk('rect', { x: box.x, y: box.y, width: 0, height: box.h });
+    clip.append(wipe);
+    const defs = mk('defs', {}); defs.append(clip);
+    svg.prepend(defs);
+    fill.setAttribute('clip-path', `url(#${id})`);
+    svg.append(fill);
+
+    sT.forEach(t => { t.style.strokeDasharray = dash; t.style.strokeDashoffset = dash; });
+    const ease = t => 1 - (1 - t) * (1 - t);                       // power2.out
+    const easeIO = t => (t < 0.5 ? 2 * t * t : 1 - 2 * (1 - t) * (1 - t)); // power2.inOut
+    const fillDur = Math.max(0.4, o.drawDuration * 0.5);
+    const fillAt = o.drawDuration + (chars.length - 1) * o.stagger + o.fillDelay;
+    let t0 = null;
+    const tick = now => {
+      if (t0 === null) t0 = now;
+      const t = (now - t0) / 1000;
+      sT.forEach((s, i) => {
+        const p = Math.min(Math.max((t - i * o.stagger) / o.drawDuration, 0), 1);
+        if (p < 1) s.style.strokeDashoffset = dash * (1 - ease(p));
+        else if (s.style.strokeDasharray) { s.style.strokeDasharray = ''; s.style.strokeDashoffset = ''; }
+      });
+      const f = Math.min(Math.max((t - fillAt) / fillDur, 0), 1);
+      wipe.setAttribute('width', box.w * easeIO(f));
+      if (f < 1) requestAnimationFrame(tick);
+    };
+    setTimeout(() => requestAnimationFrame(tick), o.delay);
+  };
+  const outlineEl = document.querySelector('.hero-title .outline');
+  if (outlineEl && !reduced) {
+    // 字体到位再量字形；开场标题升起的同时开始描线
+    Promise.race([fontsReady, new Promise(r => setTimeout(r, 1500))]).then(() =>
+      strokeText(outlineEl, { strokeColor: '#2b2b2b', fillColor: '#fff388', strokeWidth: 1.6, drawDuration: 1.8, stagger: 0.2, fillDelay: 0.1, delay: 700 }));
+  }
+
+  // ---- 角标光标：移植自 react-bits TargetCursor（gsap 补间换成 requestAnimationFrame 插值，算法不变）
+  //      光标是四个制图角标，悬停在项目图、明细行、卡片、按钮上时角标锁住它的四角（规格：DECORATIVE CORNER BRACKETS）
+  //      按规格收两处：不转圈（MOTION IS RESTRAINED）；不用反色混合，平时墨色、深色区换荧光黄 ----
+  (() => {
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isMobile = (hasTouch && innerWidth <= 768) || /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent);
+    if (isMobile || !matchMedia('(pointer: fine)').matches) return;
+
+    const SEL = '.proj-media, .bom tbody tr, .fcard, .award, .stat-card, .btn, .btn-talk, .wx-copy';
+    const DARK = '.approach, .contact';
+    const BW = 3, CS = 12;
+    const IDLE = [[-CS * 1.5, -CS * 1.5], [CS * 0.5, -CS * 1.5], [CS * 0.5, CS * 0.5], [-CS * 1.5, CS * 0.5]];
+
+    const wrap = document.createElement('div');
+    wrap.className = 'target-cursor-wrapper';
+    wrap.setAttribute('aria-hidden', 'true');
+    wrap.innerHTML = '<div class="target-cursor-dot"></div>' + ['tl', 'tr', 'br', 'bl'].map(c => `<div class="target-cursor-corner corner-${c}"></div>`).join('');
+    document.body.append(wrap);
+    root.classList.add('has-tcursor');
+    const dot = wrap.firstElementChild;
+    const corners = [...wrap.querySelectorAll('.target-cursor-corner')];
+
+    let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my, shown = false;
+    const cur = IDLE.map(p => [...p]);
+    let target = null, targetPos = null, strength = 0, down = false;
+
+    const lockOn = el => {
+      const r = el.getBoundingClientRect();
+      targetPos = [
+        [r.left - BW, r.top - BW], [r.right + BW - CS, r.top - BW],
+        [r.right + BW - CS, r.bottom + BW - CS], [r.left - BW, r.bottom + BW - CS]
+      ];
+    };
+    const setTarget = el => {
+      if (el === target) return;
+      target = el;
+      if (el) { lockOn(el); strength = 0; } else { targetPos = null; }
+    };
+
+    addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      if (!shown) { cx = mx; cy = my; shown = true; wrap.classList.add('is-on'); }
+      const el = e.target instanceof Element ? e.target : null;
+      setTarget(el ? el.closest(SEL) : null);
+      wrap.classList.toggle('is-dark', !!(el && el.closest(DARK)));
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => { shown = false; wrap.classList.remove('is-on'); setTarget(null); });
+    addEventListener('scroll', () => {
+      // 滚动时元素会移出光标下方：按光标位置重新判断目标（原版 scrollHandler 的做法）
+      if (!shown) return;
+      const el = document.elementFromPoint(mx, my);
+      setTarget(el ? el.closest(SEL) : null);
+      if (target) lockOn(target);
+    }, { passive: true });
+    addEventListener('mousedown', () => { down = true; });
+    addEventListener('mouseup', () => { down = false; });
+
+    let scale = 1;
+    const loop = () => {
+      // 光标跟手：原版 0.1s power3.out，这里每帧走剩余距离的 55%
+      cx += (mx - cx) * 0.55; cy += (my - cy) * 0.55;
+      scale += ((down ? 0.9 : 1) - scale) * 0.3;
+      wrap.style.transform = `translate(${cx}px, ${cy}px) scale(${scale})`;
+      dot.style.transform = `scale(${down ? 0.7 : 1})`;
+      if (targetPos) strength = Math.min(1, strength + 0.12);  // 原版 hoverDuration 0.2s 内强度升到 1
+      corners.forEach((c, i) => {
+        const goal = targetPos ? [targetPos[i][0] - cx, targetPos[i][1] - cy] : IDLE[i];
+        const k = targetPos ? 0.35 * strength : 0.25;          // 锁定 0.2s，松开 0.3s 回到光标
+        cur[i][0] += (goal[0] - cur[i][0]) * k;
+        cur[i][1] += (goal[1] - cur[i][1]) * k;
+        c.style.transform = `translate(${cur[i][0]}px, ${cur[i][1]}px)`;
+      });
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  })();
 
   // ---- 复制微信号 ----
   const status = document.getElementById('copy-status');

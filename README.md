@@ -16,7 +16,7 @@ python -m http.server 8000      # 浏览器开 http://localhost:8000
 |---|---|
 | `index.html` | 页面内容，部分项目配图是内联 SVG 结构图 |
 | `styles.css` | 版式、配色、响应式 |
-| `main.js` | 进场动效、数字滚动、首屏图纸网格、状态栏翻牌字、移动端菜单 |
+| `main.js` | 进场动效、数字滚动、首屏图纸网格、状态栏翻牌字、描边字、纸纹、角标光标、复制微信号、移动端菜单 |
 | `assets/` | 字体（许可证见 `assets/fonts/OFL.txt`）、项目截图 |
 | `tools/subset-cjk.py` | 按页面用字裁剪中文标题字体 |
 
@@ -30,4 +30,4 @@ python tools/subset-cjk.py
 
 ## 致谢
 
-整体界面依据 claude-directory 收录的 `meridian-drafthouse-h54` 规格；首屏图纸网格和翻牌字移植自 react-bits 的 `CursorGrid`、`SplitFlapText`；字体为 Instrument Serif、Space Grotesk、Noto Serif SC。详见 `THIRD_PARTY_NOTICES.md`。
+整体界面依据 claude-directory 收录的 `meridian-drafthouse-h54` 规格；首屏图纸网格、翻牌字、纸纹、描边字和角标光标移植自 react-bits 的 `CursorGrid`、`SplitFlapText`、`Noise`、`StrokeText`、`TargetCursor`（都改成了零依赖原生实现）；字体为 Instrument Serif、Space Grotesk、Noto Serif SC。详见 `THIRD_PARTY_NOTICES.md`。
