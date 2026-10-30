@@ -442,8 +442,8 @@ b,strong{font-weight:600}
   .stat:nth-child(n+2){border-top:1px solid var(--ink)}
   .stat{padding-top:30px;padding-bottom:32px}
   .dw-wide{display:none}
-  #wx .proj-media,#qt .proj-media,#ql .proj-media{overflow-x:auto}
-  #wx .dw,#qt .dw,#ql .dw{width:600px;max-width:none}
+  #wx .proj-media,#qt .proj-media{overflow-x:auto}
+  #wx .dw,#qt .dw{width:600px;max-width:none}
   .swipe-hint{display:block;margin-top:8px;font:500 11px/1 var(--sans);letter-spacing:.16em;color:var(--muted);text-align:right}
   .dw-tall{display:block}
   .roles div{grid-template-columns:1fr;gap:4px;padding:14px 0}
